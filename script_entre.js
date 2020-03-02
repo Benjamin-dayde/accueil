@@ -11,10 +11,25 @@ var len = recettes.length;
 
 for(var i = 0; i < len; i++) {
 
-    html += "<li>" + "<a href=\"pages_entrees/" + recettes[i].page + "\">" + recettes[i].titre + "</a>" + "<img src=\"img/" + recettes[i].image + "</li>";
+    html += "<li class=\"elme\">" + "<a href=\"pages_entrees/" + recettes[i].page + "\">" + recettes[i].titre + "</a>" + "</li>";
 };
 
 console.log(html);
 
-var liste = document.getElementById("liste");
-liste.innerHTML = html;
+var container = document.getElementById("rec_container");
+container.addEventListener("click", () => {
+    container.style.display = "none";
+});
+var elems = document.getElementsByClassName("elem");
+var len = elems.length;
+for(var i = 0; i < len; i ++) {
+    elems[i].addEventListener("click", (event) => {
+        event.preventDefault();
+        showRecette();
+    })
+    
+}
+console.log(elems);
+function showRecette() {
+    container.style.display = "block";
+}
